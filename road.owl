@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://w3id.org/road#"
-     xml:base="http://w3id.org/road"
+<rdf:RDF xmlns="http://w3id.org/tutr/"
+     xml:base="http://w3id.org/tutr/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:terms="http://purl.org/dc/terms/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
@@ -8,8 +8,10 @@
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://w3id.org/road">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://w3id.org/tutr">
+        <owl:imports rdf:resource="http://www.opengis.net/ont/geosparql"/>
         <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
     </owl:Ontology>
     
@@ -32,6 +34,12 @@
     
 
 
+    <!-- http://www.w3.org/2001/XMLSchema#duration -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#duration"/>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -43,13 +51,31 @@
     
 
 
+    <!-- http://w3id.org/road/hasActivity -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/road/hasActivity">
+        <rdfs:range rdf:resource="http://w3id.org/road/Activity"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://w3id.org/road/hasEndPoint -->
 
     <owl:ObjectProperty rdf:about="http://w3id.org/road/hasEndPoint">
         <owl:inverseOf rdf:resource="http://w3id.org/road/isEndPoint"/>
-        <rdfs:domain rdf:resource="http://w3id.org/road/Road"/>
-        <rdfs:range rdf:resource="http://w3id.org/road/End"/>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/road/hasEvent -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/road/hasEvent"/>
+    
+
+
+    <!-- http://w3id.org/road/hasGoal -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/road/hasGoal"/>
     
 
 
@@ -57,9 +83,13 @@
 
     <owl:ObjectProperty rdf:about="http://w3id.org/road/hasStartPoint">
         <owl:inverseOf rdf:resource="http://w3id.org/road/isStartPoint"/>
-        <rdfs:domain rdf:resource="http://w3id.org/road/Road"/>
-        <rdfs:range rdf:resource="http://w3id.org/road/Start"/>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/road/isCharacterizedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/road/isCharacterizedBy"/>
     
 
 
@@ -119,6 +149,31 @@
     
 
 
+    <!-- http://w3id.org/road/hasDuration -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/road/hasDuration">
+        <rdfs:domain rdf:resource="http://w3id.org/road/Activity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/road/hasEnd -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/road/hasEnd">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/road/hasStart -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/road/hasStart">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -127,6 +182,55 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://w3id.org/road/Activity -->
+
+    <owl:Class rdf:about="http://w3id.org/road/Activity">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/road/hasGoal"/>
+                        <owl:someValuesFrom rdf:resource="http://w3id.org/road/Goal"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/road/hasEndPoint"/>
+                        <owl:allValuesFrom rdf:resource="http://w3id.org/road/Point"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/road/hasStartPoint"/>
+                        <owl:allValuesFrom rdf:resource="http://w3id.org/road/Point"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/road/hasEndPoint"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://w3id.org/road/Point"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/road/hasStartPoint"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://w3id.org/road/Point"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/road/Destination -->
+
+    <owl:Class rdf:about="http://w3id.org/road/Destination">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    </owl:Class>
     
 
 
@@ -144,6 +248,108 @@
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/road/Event -->
+
+    <owl:Class rdf:about="http://w3id.org/road/Event">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/road/hasActivity"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://w3id.org/road/Activity"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/road/FixedActivity -->
+
+    <owl:Class rdf:about="http://w3id.org/road/FixedActivity">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/road/Activity"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/road/hasDuration"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/road/hasEnd"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/road/hasDuration"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/road/hasStart"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/road/hasEnd"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/road/hasStart"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/road/hasDuration"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/road/hasEnd"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/road/hasStart"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/road/FlexibleActivity -->
+
+    <owl:Class rdf:about="http://w3id.org/road/FlexibleActivity">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/road/Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/road/Goal -->
+
+    <owl:Class rdf:about="http://w3id.org/road/Goal">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
     </owl:Class>
     
 
@@ -211,6 +417,33 @@
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/road/TourismDestination -->
+
+    <owl:Class rdf:about="http://w3id.org/road/TourismDestination">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/road/hasEvent"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/road/Event"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/road/isCharacterizedBy"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/road/Activity"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/road/isCharacterizedBy"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://w3id.org/road/Activity"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/road/Destination"/>
     </owl:Class>
     
 
