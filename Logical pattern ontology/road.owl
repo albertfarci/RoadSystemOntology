@@ -3,16 +3,20 @@
      xml:base="http://w3id.org/tutr/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:ns="http://www.w3.org/2003/06/sw-vocab-status/ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:wot="http://xmlns.com/wot/0.1/"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="http://w3id.org/tutr">
         <owl:imports rdf:resource="http://www.opengis.net/ont/geosparql"/>
         <owl:imports rdf:resource="http://w3id.org/vocEvent"/>
         <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
+        <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
     </owl:Ontology>
     
 
@@ -59,6 +63,24 @@
     
 
 
+    <!-- http://w3id.org/tutr/hasActor -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/tutr/hasActor"/>
+    
+
+
+    <!-- http://w3id.org/tutr/hasAttribute -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/tutr/hasAttribute"/>
+    
+
+
+    <!-- http://w3id.org/tutr/hasEndFix -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/tutr/hasEndFix"/>
+    
+
+
     <!-- http://w3id.org/tutr/hasEndPoint -->
 
     <owl:ObjectProperty rdf:about="http://w3id.org/tutr/hasEndPoint">
@@ -75,7 +97,33 @@
 
     <!-- http://w3id.org/tutr/hasGoal -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/tutr/hasGoal"/>
+    <owl:ObjectProperty rdf:about="http://w3id.org/tutr/hasGoal">
+        <owl:inverseOf rdf:resource="http://w3id.org/tutr/satisfiedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/tutr/hasPedecessor -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/tutr/hasPedecessor"/>
+    
+
+
+    <!-- http://w3id.org/tutr/hasPoint -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/tutr/hasPoint"/>
+    
+
+
+    <!-- http://w3id.org/tutr/hasSegment -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/tutr/hasSegment"/>
+    
+
+
+    <!-- http://w3id.org/tutr/hasStartFix -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/tutr/hasStartFix"/>
     
 
 
@@ -84,6 +132,12 @@
     <owl:ObjectProperty rdf:about="http://w3id.org/tutr/hasStartPoint">
         <owl:inverseOf rdf:resource="http://w3id.org/tutr/isStartPoint"/>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/tutr/hasSuccessor -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/tutr/hasSuccessor"/>
     
 
 
@@ -127,6 +181,18 @@
     <!-- http://w3id.org/tutr/isStartPoint -->
 
     <owl:ObjectProperty rdf:about="http://w3id.org/tutr/isStartPoint"/>
+    
+
+
+    <!-- http://w3id.org/tutr/isTraversedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/tutr/isTraversedBy"/>
+    
+
+
+    <!-- http://w3id.org/tutr/satisfiedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/tutr/satisfiedBy"/>
     
 
 
@@ -174,6 +240,12 @@
     
 
 
+    <!-- http://w3id.org/tutr/hasTime -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/tutr/hasTime"/>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -208,6 +280,15 @@
                 <owl:onClass rdf:resource="http://w3id.org/tutr/Point"/>
             </owl:Restriction>
         </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/tutr/Actor -->
+
+    <owl:Class rdf:about="http://w3id.org/tutr/Actor">
+        <owl:equivalentClass rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
     </owl:Class>
     
@@ -249,6 +330,26 @@
                 <owl:onProperty rdf:resource="http://w3id.org/tutr/hasActivity"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
                 <owl:onClass rdf:resource="http://w3id.org/tutr/Activity"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/tutr/Fix -->
+
+    <owl:Class rdf:about="http://w3id.org/tutr/Fix">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/tutr/hasActor"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/tutr/Actor"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/tutr/hasPoint"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/tutr/Point"/>
             </owl:Restriction>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
@@ -338,6 +439,13 @@
     <!-- http://w3id.org/tutr/Goal -->
 
     <owl:Class rdf:about="http://w3id.org/tutr/Goal">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/tutr/satisfiedBy"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://w3id.org/tutr/Activity"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
     </owl:Class>
     
@@ -346,25 +454,8 @@
     <!-- http://w3id.org/tutr/Point -->
 
     <owl:Class rdf:about="http://w3id.org/tutr/Point">
+        <owl:equivalentClass rdf:resource="http://www.opengis.net/ont/sf#Point"/>
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    </owl:Class>
-    
-
-
-    <!-- http://w3id.org/tutr/Road -->
-
-    <owl:Class rdf:about="http://w3id.org/tutr/Road">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#OrderedCollection"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://w3id.org/tutr/isDividedBy"/>
-                        <owl:someValuesFrom rdf:resource="http://w3id.org/tutr/Segment"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
     </owl:Class>
     
 
@@ -375,14 +466,13 @@
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#Concept"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://w3id.org/tutr/hasEndPoint"/>
-                        <owl:allValuesFrom rdf:resource="http://w3id.org/tutr/End"/>
+                        <owl:onProperty rdf:resource="http://w3id.org/tutr/hasEndFix"/>
+                        <owl:someValuesFrom rdf:resource="http://w3id.org/tutr/Fix"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://w3id.org/tutr/hasStartPoint"/>
-                        <owl:allValuesFrom rdf:resource="http://w3id.org/tutr/Start"/>
+                        <owl:onProperty rdf:resource="http://w3id.org/tutr/hasStartFix"/>
+                        <owl:someValuesFrom rdf:resource="http://w3id.org/tutr/Fix"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -440,14 +530,64 @@
     <!-- http://w3id.org/tutr/Trajectory -->
 
     <owl:Class rdf:about="http://w3id.org/tutr/Trajectory">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#OrderedCollection"/>
+        <owl:equivalentClass rdf:resource="http://www.opengis.net/ont/sf#MultiPoint"/>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/tutr/hasAttribute"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/tutr/FlexibleActivity"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/tutr/hasEndPoint"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/tutr/Point"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/tutr/hasStartPoint"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/tutr/Point"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/tutr/isTraversedBy"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/tutr/Actor"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/tutr/hasSegment"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://w3id.org/tutr/Segment"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
     </owl:Class>
     
 
 
     <!-- http://w3id.org/vocEvent/Event -->
 
-    <rdf:Description rdf:about="http://w3id.org/vocEvent/Event"/>
+    <owl:Class rdf:about="http://w3id.org/vocEvent/Event"/>
+    
+
+
+    <!-- http://www.opengis.net/ont/sf#MultiPoint -->
+
+    <rdf:Description rdf:about="http://www.opengis.net/ont/sf#MultiPoint"/>
+    
+
+
+    <!-- http://www.opengis.net/ont/sf#Point -->
+
+    <rdf:Description rdf:about="http://www.opengis.net/ont/sf#Point"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+    <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Person"/>
     
 
 

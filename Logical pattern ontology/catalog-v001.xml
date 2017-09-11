@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://xmlns.com/foaf/0.1/" uri="file:/Users/alberto/RoadSystemOntology/Content%20pattern%20ontology/foaf.rdf"/>
+    <uri id="Imports Wizard Entry" name="http://xmlns.com/foaf/0.1/" uri="file:/Users/alberto/Google%20Drive/Documenti/Ontologies/Upper%20Ontologies/foaf.rdf"/>
+    <uri id="Imports Wizard Entry" name="http://www.w3.org/2004/02/skos/core" uri="file:/Users/alberto/RoadSystemOntology/Content%20pattern%20ontology/skos.rdf"/>
+    <uri id="Imports Wizard Entry" name="http://www.opengis.net/ont/geosparql" uri="file:/Users/alberto/RoadSystemOntology/Content%20pattern%20ontology/geosparql.rdf"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1505134771010" name="http://w3id.org/tutr/" uri="road.owl"/>
+    </group>
+</catalog>
