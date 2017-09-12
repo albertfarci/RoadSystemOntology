@@ -281,6 +281,11 @@
             </owl:Restriction>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <dc:description xml:lang="it">Fenomeno in grado di soffisfare un bisogno o raggiungere un obiettivo.</dc:description>
+        <dc:description xml:lang="es">Fenómeno capaz de satisfeciar una necesidad o lograr un objetivo.</dc:description>
+        <rdfs:label xml:lang="es">Actividad</rdfs:label>
+        <rdfs:label xml:lang="en">Activity</rdfs:label>
+        <rdfs:label xml:lang="it">Attività</rdfs:label>
     </owl:Class>
     
 
@@ -290,6 +295,13 @@
     <owl:Class rdf:about="http://w3id.org/tutr/Actor">
         <owl:equivalentClass rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <dc:description xml:lang="es">Un actor es alguien que realice algo.</dc:description>
+        <dc:description xml:lang="it">Un attore è colui che realizza qualcosa.</dc:description>
+        <rdfs:comment xml:lang="es">Un actor tiene un objectivo entonces el se muove desde un punto A hasta el punto B, segun una trayectoria.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Un attore ha un obiettivo quindi si muove da un punto A a un punto B, seguendo un traiettoria.</rdfs:comment>
+        <rdfs:label xml:lang="en">Actor</rdfs:label>
+        <rdfs:label xml:lang="es">Actor</rdfs:label>
+        <rdfs:label xml:lang="it">Attore</rdfs:label>
     </owl:Class>
     
 
@@ -299,6 +311,12 @@
     <owl:Class rdf:about="http://w3id.org/tutr/Destination">
         <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <dc:description xml:lang="es">Una destination es donde se puede relizar un objetivo.</dc:description>
+        <dc:description xml:lang="it">Una destinazione è dove si può soddisfare un bisogno o realizzare un obiettivo.</dc:description>
+        <rdfs:comment xml:lang="it">Una destinazione è il Poetto (lungomare) dove un Attore può correre per praticare jogging.</rdfs:comment>
+        <rdfs:label xml:lang="en">Destination</rdfs:label>
+        <rdfs:label xml:lang="it">Destinazione</rdfs:label>
+        <rdfs:label xml:lang="es">Destino</rdfs:label>
     </owl:Class>
     
 
@@ -333,6 +351,11 @@
             </owl:Restriction>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <dc:description xml:lang="it">Ciò che accade o può accadere o è già accaduto.</dc:description>
+        <dc:description xml:lang="es">Lo qué sucede o puede suceder o sucediò ya.</dc:description>
+        <rdfs:label xml:lang="en">Event</rdfs:label>
+        <rdfs:label xml:lang="es">Evento</rdfs:label>
+        <rdfs:label xml:lang="it">Evento</rdfs:label>
     </owl:Class>
     
 
@@ -353,6 +376,12 @@
             </owl:Restriction>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <dc:description xml:lang="en">Fix is defined as point indicating the position of a moving object at an instant of time.</dc:description>
+        <dc:description xml:lang="it">Posizione è definita come un punto che indica la posizione di un oggetto in movimento in un istante di tempo.</dc:description>
+        <dc:description xml:lang="es">Una posicion es definida como un punto de una posicion de un objeto en movimiento en un instante de tiempo.</dc:description>
+        <rdfs:label xml:lang="en">Fix.</rdfs:label>
+        <rdfs:label xml:lang="es">Posicion</rdfs:label>
+        <rdfs:label xml:lang="it">Posizione</rdfs:label>
     </owl:Class>
     
 
@@ -424,6 +453,11 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <dc:description xml:lang="es">Actividad fija donde se conoce el lugar donde se realiza, su duración, su inicio e su fin.</dc:description>
+        <dc:description xml:lang="es">Attività fissa. Si conosce dove si svolge, la durata, l&apos;inizio e la fine.</dc:description>
+        <rdfs:label xml:lang="es">Actividad fijada</rdfs:label>
+        <rdfs:label xml:lang="it">Attività fissata</rdfs:label>
+        <rdfs:label xml:lang="en">Fixed activity</rdfs:label>
     </owl:Class>
     
 
@@ -447,6 +481,12 @@
             </owl:Restriction>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <dc:description xml:lang="es">El obejctivo es la motivacion del movimiento y puede ser relacionada con una trayectoria entera o una pequeña parte de esa.</dc:description>
+        <dc:description xml:lang="it">L&apos;obbiettivo è il motivo del movimento e può essere relazione all&apos;intera traiettoria o ad una sua parte. L&apos;obiettivo rappresenta la ragione del movimento.</dc:description>
+        <dc:description xml:lang="en">The goal is the objective of the movement and can be relative to the entire trajectory or part of the trajectory (the semantic subtrajectory). The goal represents the reason for the movement,</dc:description>
+        <rdfs:label xml:lang="en">Goal</rdfs:label>
+        <rdfs:label xml:lang="it">Obiettivo</rdfs:label>
+        <rdfs:label xml:lang="es">Objetivo</rdfs:label>
     </owl:Class>
     
 
@@ -456,6 +496,9 @@
     <owl:Class rdf:about="http://w3id.org/tutr/Point">
         <owl:equivalentClass rdf:resource="http://www.opengis.net/ont/sf#Point"/>
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:label xml:lang="en">Point</rdfs:label>
+        <rdfs:label xml:lang="es">Punto</rdfs:label>
+        <rdfs:label xml:lang="it">Punto</rdfs:label>
     </owl:Class>
     
 
@@ -478,6 +521,9 @@
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <dc:description xml:lang="en">Segment</dc:description>
+        <dc:description xml:lang="es">Segmento</dc:description>
+        <dc:description xml:lang="it">Segmento</dc:description>
     </owl:Class>
     
 
@@ -523,6 +569,9 @@
             </owl:Restriction>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://w3id.org/tutr/Destination"/>
+        <rdfs:label xml:lang="it">Destinazione turistica</rdfs:label>
+        <rdfs:label xml:lang="es">Destino turistico</rdfs:label>
+        <rdfs:label xml:lang="en">Tourism Destination</rdfs:label>
     </owl:Class>
     
 
@@ -563,6 +612,12 @@
             </owl:Restriction>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <dc:description xml:lang="en">A trajectory consists of a series of spatiotemporal points generatedby the moving object.</dc:description>
+        <dc:description xml:lang="it">Una traiettoria consiste in una serie di punti spazio temporali generati da un oggetto in movimento.</dc:description>
+        <dc:description xml:lang="es">Una trayectoria consiste en una serie de puntos generados por un objeto en movimiento.</dc:description>
+        <rdfs:label xml:lang="en">Traiettoria</rdfs:label>
+        <rdfs:label xml:lang="en">Trajectory</rdfs:label>
+        <rdfs:label xml:lang="es">Trayectoria</rdfs:label>
     </owl:Class>
     
 
