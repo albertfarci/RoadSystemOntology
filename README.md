@@ -8,7 +8,7 @@ Feel free to contribute!!
 # Quick links
 1. [Requirements](#requirements)
 2. [Contribute](#contribute)
-3. [Images copyright claims](#copyright-claims)
+3. [Copyright claims](#copyright-claims)
 
 # Features
 # Requirements
