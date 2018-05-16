@@ -14,7 +14,7 @@ exports.generalQuery = (tags) => {
 
   return new Promise((resolve,reject) => {
 
-    queryOverpass(`[out:json];area(3606847723)->.searchArea;(way[${tags}](area.searchArea);relation[${tags}](area.searchArea););(._;>;);out;>;`, function(error, geojson){
+    queryOverpass(`[out:json];area["name"="Cagliari"]->.searchArea;(way[${tags}](area.searchArea);relation[${tags}](area.searchArea););(._;>;);out;>;`, function(error, geojson){
       if(error){
         return reject(error);
       }
@@ -39,5 +39,22 @@ exports.IdQuery = (id) => {
           return resolve(geojson);
         });
 
+  });
+};
+
+/**
+Utilizza il modulo npm query-overpass.
+Parametri: serie di id (nodi o ways o relations)
+Effettua la chiamata al servizio query-overpass;
+  la query contienete un elenco di ids. Ogni id ha un tag e una coppia chiave valore con le map feature richieste..
+Return:
+  - Promise
+**/
+exports.PointFromWayQuery = (jsonContent) => {
+  return new Promise((resolve,reject) => {
+        queryOverpass(`[out:json];way(${jsonContent.id});node(w);(._;>;);out;>;`, function(error, geojson){
+          console.log(jsonContent.id,geojson);
+          return resolve(geojson);
+        });
   });
 };

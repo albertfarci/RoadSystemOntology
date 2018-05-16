@@ -1,13 +1,17 @@
 {
   "dependencies": {
+    "array-equal": "^1.0.0",
+    "array-uniq": "^1.0.3",
     "fs": "0.0.1-security",
     "hashcode": "^1.0.3",
+    "pathfinding": "^0.4.18",
     "query-overpass": "^1.4.0",
     "request": "^2.81.0",
     "shortid": "^2.2.8",
-    "virtuoso-sparql-client": "0.0.4"
+    "unique-concat": "^0.2.2",
+    "virtuoso-sparql-client": "^0.2.0"
   },
-  "name": "overpass-extractor",
+  "name": "overpass-route-extractor",
   "optionalDependencies": {},
   "readme": "ERROR: No README data found!",
   "repository": {
@@ -15,5 +19,5 @@
     "url": "git+https://github.com/albertfarci/RoadSystemOntology/tree/master/Application"
   },
   "scripts": {},
-  "version": "1.0.0"	
+  "version": "1.0.0"
 }
