@@ -37,7 +37,6 @@ if (process.argv[2]) {
                     console.log(segment);
                     pathRelation.setRelatedWith(segment);
                 }
-
                 console.log(pathRelation.getCoordinatesWKt());
 
               })
